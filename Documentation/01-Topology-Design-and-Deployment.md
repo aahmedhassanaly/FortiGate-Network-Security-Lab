@@ -1,4 +1,4 @@
-# Task 01 — Enterprise Topology Design & Deployment
+# Task 01 —  Topology Design & Deployment
 
 ## Scenario
 

@@ -1,18 +1,5 @@
 # Task 13 — Application Control
 
-## Objective
-
-Configure and validate FortiGate Application Control for Internet traffic from VLAN10 users.
-
-The objectives of this task are:
-
-- Identify applications from real network traffic.
-- Understand Application Control categories and application signatures.
-- Configure application-specific controls.
-- Apply Application Control to an existing Internet firewall policy.
-- Verify application detection using real traffic and logs.
-- Troubleshoot unexpected application behavior.
-- Understand the difference between broad category blocking and granular application control.
 
 ## Environment
 
@@ -320,3 +307,105 @@ The final design keeps normal browser traffic available while using Application 
 **Task 13 — Application Control: COMPLETE**
 
 The task demonstrated practical Application Control configuration, application signature identification, category-based control, application overrides, real traffic testing, log investigation, troubleshooting, and real-world security design decisions.
+
+## Additional Test — Web Filter URL Wildcard vs Application Control
+
+After testing Application Control, a Web Filter test was performed to compare application-based blocking with URL-based blocking.
+
+The objective was to block YouTube using the Web Filter while keeping the `Web Client` category available.
+
+### Test Configuration
+
+The existing Web Filter profile was used:
+
+`WF-USERS-INTERNET`
+
+A Static URL Filter rule was created with:
+
+| Setting | Value |
+|---|---|
+| URL Filter | Enabled |
+| Type | Wildcard |
+| Action | Block |
+| Test Pattern | `*youtube.com*` |
+
+### Initial Result
+
+The pattern:
+
+`*youtube.com*`
+
+did not produce the expected blocking behavior in the lab.
+
+The test was then changed to a broader keyword-based wildcard:
+
+`*youtube*`
+
+### Final Test Result
+
+The pattern:
+
+`*youtube*`
+
+successfully matched the YouTube-related traffic and blocked access.
+
+This demonstrated that URL filtering depends on the actual URL/hostname presented to the Web Filter and how the wildcard pattern matches that traffic.
+<img width="1919" height="844" alt="image" src="https://github.com/user-attachments/assets/34e98433-854c-46a6-a672-482f3b0df761" />
+<img width="1918" height="873" alt="image" src="https://github.com/user-attachments/assets/6c959207-3df7-4031-8273-1be027cdfb92" />
+
+
+<img width="1063" height="814" alt="image" src="https://github.com/user-attachments/assets/0cdc18b6-bb89-4679-bcd4-163b0e1167f6" />
+
+### Application Control vs Web Filter
+
+This test demonstrated the practical difference between the two security profiles:
+
+| Security Profile | Matching Method | Example |
+|---|---|---|
+| Application Control | Application signatures | `YouTube` |
+| Web Filter | URL / web category matching | `*youtube*` |
+
+Application Control identified YouTube traffic using application signatures, but blocking the `YouTube` signature alone did not completely stop the service.
+
+The Web Filter was able to apply a URL-based rule and block traffic matching the configured wildcard pattern.
+
+### Troubleshooting Lesson
+
+When a URL Filter rule does not behave as expected, do not immediately assume that the FortiGate rule is broken.
+
+Use the logs to verify:
+
+1. The actual hostname/URL seen by FortiGate.
+2. Which Web Filter profile processed the traffic.
+3. Whether the URL matched the configured wildcard.
+4. Which policy handled the session.
+5. Which security profile generated the block event.
+
+The practical troubleshooting flow is:
+
+`Expected Match → Check Actual URL → Check Pattern → Check Web Filter Logs → Verify Policy → Retest`
+
+### Production Consideration
+
+Although `*youtube*` worked in the lab, it is a broad pattern.
+
+It can potentially match any hostname or URL containing the word `youtube`.
+
+Therefore, this pattern should not automatically be copied into a production environment without checking the required scope and reviewing Web Filter logs for false positives.
+
+For production, the rule should be designed according to the exact business requirement and validated against real traffic.
+
+### Result
+
+The test successfully demonstrated that:
+
+- Application Control and Web Filter use different matching mechanisms.
+- URL filtering can provide more granular website-level control.
+- Wildcard behavior must be verified using actual traffic and logs.
+- A rule that works in the lab should still be reviewed for scope before production deployment.
+
+**Additional Web Filter Test: COMPLETE**
+
+
+
+

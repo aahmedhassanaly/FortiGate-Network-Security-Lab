@@ -34,6 +34,7 @@ Configuration:
 - Status: `Enable`
 
 The sensor was applied to `POL-VLAN10-USERS-TO-INTERNET`.
+<img width="1872" height="907" alt="image" src="https://github.com/user-attachments/assets/3836826f-c799-45d7-9340-50005e185750" />
 
 ### IPS Verification
 
@@ -48,6 +49,7 @@ The output showed:
 ```
 SIGNATURE PERFORMANCE: 4336 packets
 ```
+<img width="1541" height="825" alt="image" src="https://github.com/user-attachments/assets/883a9424-ac55-45a5-b107-26a3140d2430" />
 
 Several signatures had hits, including:
 
@@ -131,7 +133,8 @@ The existing Web Filter, Application Control, and IPS profiles remained enabled.
 
 The test policy was placed above the general Internet policy so the test client matched it first.
 
-### Deep Inspection Result
+### <img width="1919" height="768" alt="image" src="https://github.com/user-attachments/assets/111ab1d7-4043-45aa-9544-36135ca5d460" />
+Deep Inspection Result
 
 HTTPS traffic from `10.10.10.101` matched:
 

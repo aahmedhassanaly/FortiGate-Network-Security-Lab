@@ -60,6 +60,7 @@ This task builds on the existing enterprise VLANs and firewall policies. It focu
 | R-WAN2 `Gi0/0` | `192.168.1.104/24` observed via DHCP | Cloud0 / upstream |
 
 **Topology limitation:** Both WAN routers connect to the same Cloud0 and upstream home network. The lab demonstrates SD-WAN path selection and failover between two routed paths, but it does not simulate two independent ISPs or prove resilience to a shared upstream outage.
+<img width="783" height="676" alt="image" src="https://github.com/user-attachments/assets/d0857efe-bf53-4ba8-977b-2f55db5f66d9" />
 
 ## Configuration
 
@@ -84,6 +85,7 @@ The SD-WAN zone `virtual-wan-link` contains these members:
 The default route was changed to use the SD-WAN zone instead of the old standalone gateway route. The rule `SDWAN-INTERNET-FAILOVER` was configured to prefer `port4` and use `port1` when the preferred path was unavailable.
 
 The Performance SLA `WANINTERNETHEALTH` uses Ping to monitor `8.8.8.8`. The health check provides reachability/performance information for path selection; a configured member alone should not be treated as proof that end-to-end Internet connectivity is healthy.
+<img width="1532" height="684" alt="image" src="https://github.com/user-attachments/assets/285ecde4-e74c-4a82-be47-840f1b8ca3a2" />
 
 ### 3. VLAN10 Internet Firewall Policy
 
@@ -101,6 +103,7 @@ A firewall policy was configured to allow Users-zone traffic through the SD-WAN 
 | NAT | Enabled |
 
 NAT is enabled on this policy because client traffic is being sent toward the simulated Internet through the WAN routers. Existing security-profile settings were retained where applicable.
+<img width="1517" height="677" alt="image" src="https://github.com/user-attachments/assets/1e35235d-92b3-4596-af5d-95c8ecfe30c8" />
 
 ### 4. Preserve Management Access
 
@@ -127,6 +130,10 @@ R-WAN1 forwards HTTPS to FortiGate `172.16.10.2:443`. A host route for the manag
 | `port4` restored | SD-WAN selected `port4` again |
 
 Failover and failback were observed in the FortiGate GUI and connectivity tests. SLA latency, packet loss, and jitter values varied between samples; they are point-in-time lab measurements and are not treated as fixed performance guarantees.
+<img width="1524" height="703" alt="image" src="https://github.com/user-attachments/assets/b53390c7-125e-4e57-a418-0d89718aafc4" />
+<img width="1498" height="692" alt="image" src="https://github.com/user-attachments/assets/f27c9241-7afc-4246-8398-1d32493678f8" />
+<img width="1528" height="707" alt="image" src="https://github.com/user-attachments/assets/97e6f4b1-3f75-4bb0-80b7-8c5e524061b1" />
+<img width="1525" height="666" alt="image" src="https://github.com/user-attachments/assets/535216ab-718e-4c26-a2dd-01f31a6be99b" />
 
 ## Troubleshooting Notes
 
@@ -142,13 +149,7 @@ A host route to `8.8.8.8/32` via `port4` was used during earlier troubleshooting
 
 Do not remove the management workstation route `192.168.1.144/32` as part of this cleanup; it serves a separate management-access purpose.
 
-### Troubleshooting method
 
-For any failed connectivity test, follow:
-
-**Problem → Evidence → Hypothesis → Test → Fix → Verify**
-
-Check the client gateway and DNS resolution, FortiGate policy match and NAT, SD-WAN rule/member state, SLA status, routing table, and the relevant router's upstream reachability. Change one variable at a time and retest.
 
 ## Security and Operational Considerations
 

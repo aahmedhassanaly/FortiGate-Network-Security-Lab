@@ -18,11 +18,8 @@ The focus is practical implementation, traffic-flow understanding, verification,
 
 ## Network Topology
 
-<!-- Add the final topology image in this section. -->
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/042a11a1-f86b-414c-bb1a-3b7b5a1f22aa" />
 
-<p align="center">
-  <em>Topology diagram will be added here.</em>
-</p>
 
 ## VLAN Design
 

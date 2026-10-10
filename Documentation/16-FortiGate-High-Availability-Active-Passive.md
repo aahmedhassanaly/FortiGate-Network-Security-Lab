@@ -49,14 +49,15 @@ The goal of this task is to establish the HA cluster, verify synchronization, pr
 
 Note: This is a logical illustration of the lab's WAN and HA roles, not a physical wiring diagram. Both simulated WAN routers use the same Cloud0/upstream home network, so the lab does not represent two fully independent ISPs.
 
----
+---<img width="759" height="692" alt="image" src="https://github.com/user-attachments/assets/803895dc-5d4d-4f5d-a8f4-d3ca05547d7a" />
+
 
 ## HA Configuration
 
 The observed HA configuration on the cluster included:
 
-    set group-id 16
-    set group-name "HQ-HA"
+    set group-id 0
+    set group-name "HQ"
     set mode a-p
     set hbdev "port5" 0
     set session-pickup enable
@@ -64,6 +65,7 @@ The observed HA configuration on the cluster included:
     set override disable
 
 The configured monitored interfaces were port1, port2, and port4.
+<img width="1077" height="685" alt="image" src="https://github.com/user-attachments/assets/6997d190-e9d8-45bb-82fd-3c8208d34b4e" />
 
 ### Important management note
 
@@ -128,14 +130,7 @@ The lab remains in Active-Passive mode.
 The Active-Passive HA cluster was formed successfully. The heartbeat and configuration synchronization were observed as healthy, and GUI access to FGT-HQ-01 was restored.
 
 The task is **in progress**, not fully complete: independent management access to FGT-HQ-02 and a controlled HA failover test with traffic verification remain outstanding.
-
-## Next Steps
-
-1. Verify the live cluster state and confirm both members are synchronized.
-2. Use an unused interface such as port6 or port7 only after confirming its configuration, and connect both member interfaces to the same dedicated management L2 network.
-3. Configure unique management IP addresses for the two members according to Fortinet's reserved-management-interface documentation.
-4. Back up both configurations and ensure console access before a controlled HA failover test.
-5. Test SD-WAN WAN1 failover/failback separately from firewall HA failover.
+<img width="1508" height="688" alt="image" src="https://github.com/user-attachments/assets/992dba14-cd4d-4aef-8840-2eb8e3713b05" />
 
 ## References
 

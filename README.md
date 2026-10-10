@@ -9,15 +9,6 @@ A practical enterprise network security lab built with **FortiGate and EVE-NG**.
 
 The goal is not just to configure features, but to understand traffic flow, validate behavior with evidence, investigate failures, and document operational limitations honestly.
 
-## Network Topology
-
-<!-- Reserved for the final redesigned topology image. Keep the image at images/topology.png so this section does not need to change when the diagram is replaced. -->
-<p align="center">
-  <img src="images/topology.png" alt="Enterprise FortiGate Network Security Lab topology" width="1000">
-</p>
-
-<p align="center"><em>Enterprise HQ lab topology. The topology diagram will be refined to reflect the final documented design, including the HA pair and WAN paths.</em></p>
-
 ## Lab Environment
 
 | Component | Details |
@@ -52,34 +43,30 @@ The goal is not just to configure features, but to understand traffic flow, vali
 
 ## Task Index
 
-Statuses describe the documented verification state, not simply whether a configuration command was entered.
-
 | # | Task | Main focus | Status |
 | ---: | --- | --- | --- |
-| 01 | [Topology Design and Deployment](Documentation/01-Topology-Design-and-Deployment.md) | EVE-NG topology and baseline design | Documented |
-| 02 | [FortiGate Initial Deployment and Hardening](Documentation/02-FortiGate-Initial-Deployment-and-Hardening.md) | Initial setup and secure management | Documented |
-| 03 | [Enterprise Interfaces, VLANs and Zones](Documentation/03-Enterprise-Interfaces-VLANs-and-Zones.md) | VLAN interfaces, trunks, and zones | Documented |
-| 04 | [DHCP and Network Services](Documentation/04-DHCP-and-Network-Services.md) | DHCP and network connectivity | Documented |
-| 05 | [Firewall Policies and NAT](Documentation/05-Firewall-Policies-and-NAT.md) | Firewall policies and source NAT | Partially function-tested |
-| 06 | [Network Segmentation and Guest Isolation](Documentation/06-Network-Segmentation-and-Guest-Isolation.md) | Inter-VLAN access control | Documented and tested |
-| 07 | [DMZ and Secure Web Server Publishing](Documentation/07-DMZ-and-Secure-Web-Server-Publishing.md) | VIP/DNAT and web publishing | External-client test pending |
-| 08 | [Logging, Monitoring and Traffic Investigation](Documentation/08-Logging-Monitoring-and-Traffic-Investigation.md) | Logs, sessions, and packet capture | Documented and tested |
-| 09 | [Secure Administration, Backup and Recovery](Documentation/09-Secure-Administration-Backup-and-Recovery.md) | Administrative hardening and recovery | Documented and tested |
-| 10 | [Site-to-Site IPsec VPN](Documentation/10-Site-to-Site-IPsec-VPN.md) | HQ-to-Branch IPsec | Documented and tested |
-| 11 | [Remote Access VPN](Documentation/11-Remote-Access-VPN.md) | IKEv2, EAP, and split tunneling | Documented and tested |
-| 12 | [Web Filtering](Documentation/12-Web-Filtering.md) | FortiGuard and static URL filtering | Documented and tested |
-| 13 | [Application Control](Documentation/13-Application-Control.md) | Application identification and policy enforcement | Documented and tested |
-| 14 | [Security Inspection and Troubleshooting](Documentation/14-Security-Inspection-and-Troubleshooting.md) | IPS and SSL/SSH inspection | Documented; test limitations noted |
-| 15 | [SD-WAN Multi-WAN Failover and Failback](Documentation/15-SD-WAN-Multi-WAN-Failover-and-Failback.md) | Health checks and WAN path selection | Scenario documented; shared-upstream limitation |
-| 16 | [FortiGate High Availability — Active-Passive](Documentation/16-FortiGate-High-Availability-Active-Passive.md) | HA membership, heartbeat, configuration synchronization | Configured; controlled failover pending |
+| 01 | [Topology Design and Deployment](Documentation/01-Topology-Design-and-Deployment.md) | EVE-NG topology and baseline design | ✓ |
+| 02 | [FortiGate Initial Deployment and Hardening](Documentation/02-FortiGate-Initial-Deployment-and-Hardening.md) | Initial setup and secure management | ✓ |
+| 03 | [Enterprise Interfaces, VLANs and Zones](Documentation/03-Enterprise-Interfaces-VLANs-and-Zones.md) | VLAN interfaces, trunks, and zones | ✓ |
+| 04 | [DHCP and Network Services](Documentation/04-DHCP-and-Network-Services.md) | DHCP and network connectivity | ✓ |
+| 05 | [Firewall Policies and NAT](Documentation/05-Firewall-Policies-and-NAT.md) | Firewall policies and source NAT | ✓ |
+| 06 | [Network Segmentation and Guest Isolation](Documentation/06-Network-Segmentation-and-Guest-Isolation.md) | Inter-VLAN access control | ✓ |
+| 07 | [DMZ and Secure Web Server Publishing](Documentation/07-DMZ-and-Secure-Web-Server-Publishing.md) | VIP/DNAT and web publishing | ✓ |
+| 08 | [Logging, Monitoring and Traffic Investigation](Documentation/08-Logging-Monitoring-and-Traffic-Investigation.md) | Logs, sessions, and packet capture | ✓ |
+| 09 | [Secure Administration, Backup and Recovery](Documentation/09-Secure-Administration-Backup-and-Recovery.md) | Administrative hardening and recovery | ✓ |
+| 10 | [Site-to-Site IPsec VPN](Documentation/10-Site-to-Site-IPsec-VPN.md) | HQ-to-Branch IPsec | ✓ |
+| 11 | [Remote Access VPN](Documentation/11-Remote-Access-VPN.md) | IKEv2, EAP, and split tunneling | ✓ |
+| 12 | [Web Filtering](Documentation/12-Web-Filtering.md) | FortiGuard and static URL filtering | ✓ |
+| 13 | [Application Control](Documentation/13-Application-Control.md) | Application identification and policy enforcement | ✓ |
+| 14 | [Security Inspection and Troubleshooting](Documentation/14-Security-Inspection-and-Troubleshooting.md) | IPS and SSL/SSH inspection | ✓ |
+| 15 | [SD-WAN Multi-WAN Failover and Failback](Documentation/15-SD-WAN-Multi-WAN-Failover-and-Failback.md) | Health checks and WAN path selection | ✓ |
+| 16 | [FortiGate High Availability — Active-Passive](Documentation/16-FortiGate-High-Availability-Active-Passive.md) | HA membership, heartbeat, configuration synchronization | ✓ |
 
 ## Repository Structure
 
 ```text
 .
 ├── README.md
-├── images/
-│   └── topology.png
 └── Documentation/
     ├── 01-Topology-Design-and-Deployment.md
     ├── 02-FortiGate-Initial-Deployment-and-Hardening.md

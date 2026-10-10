@@ -12,7 +12,7 @@ Every task is documented the way it would be in a real environment: scenario, ob
 ## Network Topology
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0600dc57-cbda-4f33-88a5-936234ea1fda" alt="Enterprise FortiGate Network Topology" width="900">
+  <img src="images/topology.png" alt="Enterprise FortiGate Network Topology" width="900">
 </p>
 
 <p align="center"><em>HQ topology built in EVE-NG: FortiGate perimeter firewall, Core Layer 3 switch, access switches, internal clients, and a separate DMZ web server.</em></p>
